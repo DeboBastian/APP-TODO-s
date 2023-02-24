@@ -17,25 +17,29 @@
         <div class="container">
             <h1>LISTA DE TAREAS</h1>
             <div id="add">
-                <input type="text" id="new" placeholder="Nueva tarea">
-                <select name="priority">
-                    <option value="">Prioridad</option>
-                    <option value="urgente">Urgente</option>
-                    <option value="diaria">Diaria</option>
-                    <option value="mensual">Mensual</option>
-                </select>
-                <input type="submit" value="guardar">
+                <form action="newToDo">
+                    <input type="text" id="new" placeholder="Nueva tarea">
+                    <select name="priority">
+                        <option value="">Prioridad</option>
+                        <option value="urgente">Urgente</option>
+                        <option value="diaria">Diaria</option>
+                        <option value="mensual">Mensual</option>
+                    </select>
+                    <input type="submit" value="guardar">
+                </form>
+                </form>
             </div>
             <hr>
             <div id="busqueda">
-                <input type="text" id="search" placeholder="Busqueda de tareas">
-                <select name="priority">
-                    <option value="">Prioridad</option>
-                    <option value="urgente">Urgente</option>
-                    <option value="diaria">Diaria</option>
-                    <option value="mensual">Mensual</option>
-                </select>
-                <input type="submit" value="buscar">
+                <form action="formSearch">
+                    <input type="text" id="search" placeholder="Busqueda de tareas">
+                    <select name="priority">
+                        <option value="">Prioridad</option>
+                        <option value="urgente">Urgente</option>
+                        <option value="diaria">Diaria</option>
+                        <option value="mensual">Mensual</option>
+                    </select>
+                    <input type="submit" value="buscar">
             </div>
         </div>
     </header>
@@ -43,13 +47,13 @@
     <main>
 
         <div class="container">
+            <div id="tareas" class="flex">
 
 
 
 
 
-
-
+            </div>
 
 
 
