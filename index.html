@@ -25,11 +25,11 @@
                         <option value="diaria">Diaria</option>
                         <option value="mensual">Mensual</option>
                     </select>
-                    <input type="submit" value="guardar">
-                </form>
+                    <button>GUARDAR</button>
+
                 </form>
             </div>
-            <hr>
+            <hr noshade="noshade">
             <div id="busqueda">
                 <form action="formSearch">
                     <input type="text" id="search" placeholder="Busqueda de tareas">
@@ -39,7 +39,8 @@
                         <option value="diaria">Diaria</option>
                         <option value="mensual">Mensual</option>
                     </select>
-                    <input type="submit" value="buscar">
+                    <button>Filtrar</button>
+                </form>
             </div>
         </div>
     </header>
@@ -47,16 +48,24 @@
     <main>
 
         <div class="container">
-            <div id="tareas" class="flex">
+            <h2>TO DO</h2>
+            
+            <article class="urgente">
+                <h3>Estudiar</h3>
+                <button>BORRAR</button>
+            </article>
+            <hr>
+            <article class="diaria">
+                <h3>Hacer deporte</h3>
+                <button>BORRAR</button>
+            </article>
+            <hr>
+            <article class="mensual">
+                <h3>Leer un libro</h3>
+                <button>BORRAR</button>
+            </article>
+            <hr>
 
-
-
-
-
-            </div>
-
-
-hola esto es una prueba
 
         </div>
     </main>
@@ -65,7 +74,6 @@ hola esto es una prueba
     <footer>
 
     </footer>
-
 
 
     <script src="./js/vista.js"></script>
