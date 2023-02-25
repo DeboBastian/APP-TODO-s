@@ -53,7 +53,8 @@ table {
 
 h1{
     font-family:Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
-    font-size: 150%;
+    font-size: 2em;
+    text-shadow: 2px 2px 2px white;
     text-align: center;
     margin: 3.125em;
     color: rgba(8, 103, 135, 0.877)
@@ -108,11 +109,12 @@ main article{
 main h2{
   
     font-weight: bolder;
-    font-size: 130%;
-    color: rgb(29, 62, 163);
+    font-size: 2em;
+    color: rgb(163, 29, 127);
     padding-top: 1.75em;
     padding-bottom: 1.875em;
-    
+    text-shadow: 2px 2px 2px black;
+    text-align: center;
 }
 
 main button{
