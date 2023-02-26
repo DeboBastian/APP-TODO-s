@@ -72,11 +72,9 @@ function busqueda(event) {
 
     let letra = event.target.value;
     let listaFiltrada = busquedaTarea(Listatareas, letra);
-    if (listaFiltrada.length === 0) {
-        alert('No se encontraron resultados')
-    } else {
+    
         printTareas(listaFiltrada, sectionTareas)
-    }
+    
 
 }
 
