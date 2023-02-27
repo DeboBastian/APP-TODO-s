@@ -1,10 +1,9 @@
 
 
 const sectionTareas = document.querySelector('#tareas');
-const guardar = document.querySelector('#guardar');
+const guardar = document.querySelector('#save');
 const inputSearch = document.querySelector('#formSearch');
 const addTarea = document.querySelector('#newToDo');
-
 
 
 
@@ -20,7 +19,7 @@ function printTareas(pListTareas, pSectionDom) {
     return false;
 }
 
-// REVISAR NO HAY TAREAS QUE MOSTRAR - NO FUNCIONA
+// REVISAR NO HAY TAREAS QUE MOSTRAR - NO FUNCIONA CUANDO HACEMOS EL BORRADO DE TODAS LAS TAREAS, si es por busqueda semantica si 
 
 function pintOneTarea(pTarea, pDom) {
 
@@ -32,6 +31,7 @@ function pintOneTarea(pTarea, pDom) {
     article.classList.add`${pTarea.prioridad}`;
     h3.innerHTML = `${pTarea.nombre}`;
     button.innerHTML = 'BORRAR';
+    button.dataset.id = pTarea.id;
     hr.innerHTML = '<hr>';
     // HR NO FUNCIONA
 
@@ -49,18 +49,21 @@ printTareas(Listatareas, sectionTareas)
 // REVISAR EVENT . MARCA UNDEFINED
 
 function removeTarea(event) {
-    let idBorrar = event.target.id;
+    let idBorrar = event.target.dataset.id;
     let result = deleteTarea(Listatareas, idBorrar);
-    if (result) {
+    if (result.status) {
         event.target.parentNode.remove();
         alert('Tarea borrada correctamente')
     } else {
         alert('Fallo al borrar la tarea')
     }
+    if (Listatareas.length === 0) {
+        sectionTareas.innerHTML = "<h2>No hay tareas que mostrar</h2>";
+    }
+
 }
 
 //removeTarea()
-
 
 
 
@@ -72,32 +75,30 @@ function busqueda(event) {
 
     let letra = event.target.value;
     let listaFiltrada = busquedaTarea(Listatareas, letra);
-    
-        printTareas(listaFiltrada, sectionTareas)
-    
+
+    printTareas(listaFiltrada, sectionTareas)
+
 
 }
 
 
-
-
-addTarea.addEventListener('submit', getDataForm)
-
-function getDataForm(event) {
+addTarea.addEventListener('submit', saveTarea)
+function saveTarea(event) {
     event.preventDefault();
 
+    if (event.target.new.value !== "" && event.target.priority.value !== "") {
 
-    let nombre = event.target.new.value;
-    let prioridad = event.target.priority.value
-
-    let result = NewTarea(Listatareas, nombre, prioridad);
-    if (result) {
+        const newTarea = {
+            id: idGlobal,
+            nombre: event.target.new.value,
+            prioridad: event.target.priority.value
+        }
+        idGlobal++;
+        Listatareas.push(newTarea);
+        pintOneTarea(newTarea, sectionTareas)
         alert('Tarea agregada correctamente')
     } else {
-        alert('Fallo al agregar la tarea')
+        alert('Faltan datos')
     }
 
-
 }
-
-//getDataForm()

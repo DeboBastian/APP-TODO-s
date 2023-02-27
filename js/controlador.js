@@ -3,7 +3,7 @@
 
 function deleteTarea(pListTareas, pId) {
 
-    let posicion = pListTareas.findIndex(tarea => tarea.id === pId);
+    let posicion = pListTareas.findIndex(tarea => tarea.id === parseInt(pId));
     if (posicion !== -1) {
         pListTareas.splice(posicion, 1);
         return { status: true, msg: 'Tarea borrada correctamente' }
@@ -37,10 +37,10 @@ function NewTarea(pListTareas, pnombreTarea, pPrioridad) {
     }
 
      pListTareas.push(newTarea);
- idGlobal++;
+    idGlobal++;
      return newTarea
  }
 
 
-NewTarea(Listatareas, 'poner lavadora', 'urgente')
+//NewTarea(Listatareas, 'poner lavadora', 'urgente')
 
