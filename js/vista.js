@@ -19,7 +19,6 @@ function printTareas(pListTareas, pSectionDom) {
     return false;
 }
 
-// REVISAR NO HAY TAREAS QUE MOSTRAR - NO FUNCIONA CUANDO HACEMOS EL BORRADO DE TODAS LAS TAREAS, si es por busqueda semantica si 
 
 function pintOneTarea(pTarea, pDom) {
 
@@ -33,20 +32,21 @@ function pintOneTarea(pTarea, pDom) {
     button.innerHTML = 'BORRAR';
     button.dataset.id = pTarea.id;
     hr.innerHTML = '<hr>';
-    // HR NO FUNCIONA
+    hr.noshade='noshade'
+   
 
     button.addEventListener('click', removeTarea);
 
     article.appendChild(h3);
     article.appendChild(button);
-    article.appendChild(hr);
+    
     pDom.appendChild(article);
-
+    pDom.appendChild(hr);
 }
 
 printTareas(Listatareas, sectionTareas)
 
-// REVISAR EVENT . MARCA UNDEFINED
+
 
 function removeTarea(event) {
     let idBorrar = event.target.dataset.id;
@@ -100,5 +100,24 @@ function saveTarea(event) {
     } else {
         alert('Faltan datos')
     }
-
+    event.target.reset()
 }
+
+
+const priority = document.querySelector('#priority')
+priority.addEventListener('change', prioridad)
+
+function prioridad(event) {
+    event.preventDefault();
+    let prioridad = event.target.value;
+
+    if (prioridad !== "") {
+        let listaFiltrada = filterByPriority(Listatareas, prioridad);
+        printTareas(listaFiltrada, sectionTareas)
+
+    } else {
+        sectionTareas.innerHTML = "<h2>No hay tareas que mostrar</h2>";
+    }}
+
+
+

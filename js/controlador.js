@@ -19,7 +19,7 @@ function deleteTarea(pListTareas, pId) {
 
 function busquedaTarea(pListTareas, pLetra) {
     return pListTareas.filter(tarea => tarea.nombre.toLowerCase().includes(pLetra.toLowerCase()))
-   
+
 }
 
 //console.log(busquedaTarea(Listatareas, 'e'))
@@ -31,16 +31,20 @@ function busquedaTarea(pListTareas, pLetra) {
 
 function NewTarea(pListTareas, pnombreTarea, pPrioridad) {
     let newTarea = {
-       id: idGlobal,
+        id: idGlobal,
         nombre: pnombreTarea,
         prioridad: pPrioridad
     }
 
-     pListTareas.push(newTarea);
+    pListTareas.push(newTarea);
     idGlobal++;
-     return newTarea
- }
+    return newTarea
+}
 
 
 //NewTarea(Listatareas, 'poner lavadora', 'urgente')
 
+
+
+//filtrar tareas por prioridad
+const filterByPriority = (pListTareas, pPrioridad) => pListTareas.filter(tarea => tarea.prioridad.includes(pPrioridad));
