@@ -17,7 +17,7 @@
         <div class="container">
             <h1>LISTA DE TAREAS</h1>
             <div id="add">
-                <form action="newToDo">
+                <form id="newToDo">
                     <input type="text" id="new" placeholder="Nueva tarea">
                     <select name="priority">
                         <option value="">Prioridad</option>
@@ -25,13 +25,13 @@
                         <option value="diaria">Diaria</option>
                         <option value="mensual">Mensual</option>
                     </select>
-                    <button>GUARDAR</button>
+                    <button id="save">GUARDAR</button>
 
                 </form>
             </div>
             <hr noshade="noshade">
             <div id="busqueda">
-                <form action="formSearch">
+                <form id="formSearch">
                     <input type="text" id="search" placeholder="Busqueda de tareas">
                     <select name="priority">
                         <option value="">Prioridad</option>
@@ -39,7 +39,7 @@
                         <option value="diaria">Diaria</option>
                         <option value="mensual">Mensual</option>
                     </select>
-                    <button>Filtrar</button>
+                    <button id="filter">Filtrar</button>
                 </form>
             </div>
         </div>
