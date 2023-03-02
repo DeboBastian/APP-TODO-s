@@ -15,7 +15,13 @@
 
     <header>
         <div class="container">
+
             <h1>LISTA DE TAREAS</h1>
+            <div>
+                <p class="urgente">URGENTES</p>
+                <p class="diaria">DIARIAS</p>
+                <p class="mensual">MENSUALES</p>
+            </div>
             <div id="add">
                 <form id="newToDo">
                     <input type="text" id="new" placeholder="Nueva tarea">
@@ -34,12 +40,11 @@
                 <form id="formSearch">
                     <input type="text" id="search" placeholder="Busqueda de tareas">
                     <select name="priority" id="priority">
-                        <option value="">Prioridad</option>
+                        <option value="">Filtrar por prioridad</option>
                         <option value="urgente">Urgente</option>
                         <option value="diaria">Diaria</option>
                         <option value="mensual">Mensual</option>
                     </select>
-                    <button id="filter">Filtrar</button>
                 </form>
             </div>
         </div>

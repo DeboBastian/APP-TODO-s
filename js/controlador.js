@@ -29,21 +29,27 @@ function busquedaTarea(pListTareas, pLetra) {
 
 //AÑADIR TAREAS
 
-function NewTarea(pListTareas, pnombreTarea, pPrioridad) {
-    let newTarea = {
-        id: idGlobal,
-        nombre: pnombreTarea,
-        prioridad: pPrioridad
-    }
+// function NewTarea(pListTareas, pnombreTarea, pPrioridad) {
+//     let newTarea = {
+//         id: idGlobal,
+//         nombre: pnombreTarea,
+//         prioridad: pPrioridad
+//     }
 
-    pListTareas.push(newTarea);
-    idGlobal++;
-    return newTarea
-}
+//     pListTareas.push(newTarea);
+//     idGlobal++;
+//     return newTarea
+// }
 
 
 //NewTarea(Listatareas, 'poner lavadora', 'urgente')
 
+// function addTask(pTarea) {
+//     const tareas = JSON.parse(localStorage.getItem('tareas'));
+//     tareas.push(pTarea);
+//     localStorage.setItem('tareas', JSON.stringify(tareas));
+//     return true;
+// }
 
 
 //filtrar tareas por prioridad

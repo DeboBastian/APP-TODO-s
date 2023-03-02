@@ -25,23 +25,20 @@ function pintOneTarea(pTarea, pDom) {
     const article = document.createElement('article');
     const h3 = document.createElement('h3');
     const button = document.createElement('button');
-    const hr = document.createElement('hr');
 
     article.classList.add`${pTarea.prioridad}`;
     h3.innerHTML = `${pTarea.nombre}`;
     button.innerHTML = 'BORRAR';
     button.dataset.id = pTarea.id;
-    hr.innerHTML = '<hr>';
-    hr.noshade='noshade'
-   
+
 
     button.addEventListener('click', removeTarea);
 
     article.appendChild(h3);
     article.appendChild(button);
-    
+
     pDom.appendChild(article);
-    pDom.appendChild(hr);
+
 }
 
 printTareas(Listatareas, sectionTareas)
@@ -78,7 +75,6 @@ function busqueda(event) {
 
     printTareas(listaFiltrada, sectionTareas)
 
-
 }
 
 
@@ -96,6 +92,7 @@ function saveTarea(event) {
         idGlobal++;
         Listatareas.push(newTarea);
         pintOneTarea(newTarea, sectionTareas)
+        localStorage.setItem('Storagetareas', JSON.stringify(Listatareas));
         alert('Tarea agregada correctamente')
     } else {
         alert('Faltan datos')
@@ -116,8 +113,20 @@ function prioridad(event) {
         printTareas(listaFiltrada, sectionTareas)
 
     } else {
-        sectionTareas.innerHTML = "<h2>No hay tareas que mostrar</h2>";
-    }}
+        printTareas(Listatareas, sectionTareas)
+    }
+}
 
 
 
+function init() {
+    if (localStorage.getItem('Storagetareas') === null) {
+        localStorage.setItem('Storagetareas', JSON.stringify(Listatareas));
+    }
+
+    Listatareas = JSON.parse(localStorage.getItem('Storagetareas'));
+
+    printTareas(Listatareas, sectionTareas);
+}
+
+init();

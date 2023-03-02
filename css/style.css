@@ -24,6 +24,11 @@ article, aside, details, figcaption, figure,
 footer, header, hgroup, menu, nav, section {
 	display: block;
 }
+header{
+    background-color: aquamarine;
+    padding-top: 0.313em;
+    padding-bottom: 0.313em;
+}
 body {
 	line-height: 1;
     font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
@@ -56,9 +61,33 @@ h1{
     font-size: 2em;
     text-shadow: 2px 2px 2px white;
     text-align: center;
-    margin: 3.125em;
+    margin: 2.125em;
+    margin-bottom: 1em;
     color: rgba(8, 103, 135, 0.877)
 
+}
+div p.urgente{
+    background-color: crimson;
+    text-align: center;
+    padding: 3px;
+    margin-bottom: 1px;
+    border-radius: 10px;
+}
+
+div p.diaria{
+    background-color:  rgb(220, 173, 20) ;
+    text-align: center;
+    padding: 3px;
+    margin-bottom: 1px;
+    border-radius: 10px;
+}
+
+div p.mensual{
+    background-color: rgb(20, 160, 220);
+    text-align: center;
+    padding: 3px;
+    margin-bottom: 1px;
+    border-radius: 10px;
 }
 
 #add{
@@ -75,11 +104,12 @@ h1{
     padding: 2%;
     font-weight: bold;
     cursor: pointer;
+    border-radius: 5px;
 }
 
 input{
     border-radius: 20px;
- padding: 5px;
+    padding: 5px;
 }
 
 header hr{
@@ -97,15 +127,6 @@ article>button{
     right: 0;
 }
 
-main hr{
-    border-color: rgba(9, 9, 9, 0.466);
-   
-}
-
-main article{
-    margin-top: 20px;
-    margin-bottom: 20px;
-}
 main h2{
   
     font-weight: bolder;
@@ -117,6 +138,16 @@ main h2{
     text-align: center;
 }
 
+main article{
+    margin-top: 20px;
+    margin-bottom: 20px;
+    border-bottom: 2px solid orange;
+}
+
+main article:last-child{
+    border-bottom: 0;
+}
+
 main button{
     background-color: tomato;
     border-radius: 0.625em;
@@ -126,21 +157,24 @@ main button{
 }
 
 main .urgente h3{
-background-color: crimson;
- padding: 0.625em;
+    background-color: crimson;
+    padding: 0.625em;
     border-radius: 0.313em;
+    margin-bottom: 4px;
 }
 
 main .diaria h3{
     background-color: rgb(220, 173, 20);
-     padding: 0.625em;
+    padding: 0.625em;
     border-radius: 0.313em;
+    margin-bottom: 4px;
 }
 
 main .mensual h3{
     background-color: rgb(20, 160, 220);
     padding: 0.625em;
     border-radius: 0.313em;
+    margin-bottom: 4px;
 }
 
 
