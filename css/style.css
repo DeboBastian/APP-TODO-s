@@ -56,6 +56,12 @@ table {
     position: relative
 }
 
+i{
+    width: 80px;
+    height: 50px;
+    color: red;
+}
+
 h1{
     font-family:Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
     font-size: 2em;

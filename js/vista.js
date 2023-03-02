@@ -4,10 +4,29 @@ const sectionTareas = document.querySelector('#tareas');
 const inputSearch = document.querySelector('#formSearch');
 const addTarea = document.querySelector('#newToDo');
 
+const busqueda = event => {
+    event.preventDefault();
+    let letra = event.target.value;
+    printTareas(busquedaTarea(allTasks, letra), sectionTareas);
+}
+
+
+const removeTarea = event => {
+    let idBorrar = event.target.dataset.id;
+    if (deleteTarea(allTasks, idBorrar)) {
+        event.target.parentNode.remove();
+        localStorage.setItem('Storagetareas', JSON.stringify(allTasks));
+        alert('Tarea borrada correctamente')
+    } else {
+        alert('Fallo al borrar la tarea')
+    }
+    if (allTasks.length === 0) {
+        sectionTareas.innerHTML = "<h2>No hay tareas que mostrar</h2>";
+    }
+}
 
 
 function printTareas(pListTareas, pSectionDom) {
-
     pSectionDom.innerHTML = '';
     if (pListTareas.length > 0) {
         pListTareas.forEach(tarea => pintOneTarea(tarea, pSectionDom))
@@ -18,8 +37,7 @@ function printTareas(pListTareas, pSectionDom) {
 }
 
 
-function pintOneTarea(pTarea, pDom) {
-
+const pintOneTarea = (pTarea, pDom) => {
     const article = document.createElement('article');
     const h3 = document.createElement('h3');
     const button = document.createElement('button');
@@ -29,47 +47,14 @@ function pintOneTarea(pTarea, pDom) {
     button.innerHTML = 'BORRAR';
     button.dataset.id = pTarea.id;
 
-
     button.addEventListener('click', removeTarea);
 
     article.appendChild(h3);
     article.appendChild(button);
 
     pDom.appendChild(article);
-
 }
-
-printTareas(Listatareas, sectionTareas)
-
-
-
-function removeTarea(event) {
-    let idBorrar = event.target.dataset.id;
-    let result = deleteTarea(Listatareas, idBorrar);
-    if (result.status) {
-        event.target.parentNode.remove();
-        localStorage.setItem('Storagetareas', JSON.stringify(Listatareas));
-        alert('Tarea borrada correctamente')
-    } else {
-        alert('Fallo al borrar la tarea')
-    }
-    if (Listatareas.length === 0) {
-        sectionTareas.innerHTML = "<h2>No hay tareas que mostrar</h2>";
-    }
-
-}
-
-inputSearch.addEventListener('input', busqueda)
-
-
-function busqueda(event) {
-    event.preventDefault();
-
-    let letra = event.target.value;
-    let listaFiltrada = busquedaTarea(Listatareas, letra);
-
-    printTareas(listaFiltrada, sectionTareas)
-}
+printTareas(allTasks, sectionTareas)
 
 
 addTarea.addEventListener('submit', saveTarea)
@@ -84,9 +69,10 @@ function saveTarea(event) {
             prioridad: event.target.priority.value
         }
         idGlobal++;
-        Listatareas.push(newTarea);
+        localStorage.setItem('ultimoID', idGlobal);
+        allTasks.push(newTarea);
         pintOneTarea(newTarea, sectionTareas)
-        localStorage.setItem('Storagetareas', JSON.stringify(Listatareas));
+        localStorage.setItem('Storagetareas', JSON.stringify(allTasks));
         alert('Tarea agregada correctamente')
     } else {
         alert('Faltan datos')
@@ -101,26 +87,22 @@ priority.addEventListener('change', prioridad)
 function prioridad(event) {
     event.preventDefault();
     let prioridad = event.target.value;
-
-    if (prioridad !== "") {
-        let listaFiltrada = filterByPriority(Listatareas, prioridad);
-        printTareas(listaFiltrada, sectionTareas)
-
-    } else {
-        printTareas(Listatareas, sectionTareas)
-    }
+    (prioridad !== "") ? printTareas(filterByPriority(allTasks, prioridad), sectionTareas) : printTareas(allTasks, sectionTareas)
 }
 
 
+inputSearch.addEventListener('input', busqueda)
 
 function init() {
     if (localStorage.getItem('Storagetareas') === null) {
-        localStorage.setItem('Storagetareas', JSON.stringify(Listatareas));
+        localStorage.setItem('Storagetareas', JSON.stringify(allTasks));
     }
-
-    Listatareas = JSON.parse(localStorage.getItem('Storagetareas'));
-
-    printTareas(Listatareas, sectionTareas);
+    if (localStorage.getItem('ultimoID') === null) {
+        localStorage.setItem('ultimoID', idGlobal);
+    }
+    allTasks = JSON.parse(localStorage.getItem('Storagetareas'));
+    idGlobal = parseInt(localStorage.getItem('ultimoID'));
+    printTareas(allTasks, sectionTareas);
 }
 
 init();

@@ -1,5 +1,5 @@
 let idGlobal = 4
-let Listatareas = [
+let allTasks = [
     {
         id: 1,
         nombre: 'Estudiar',
