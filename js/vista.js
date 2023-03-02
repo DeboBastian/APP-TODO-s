@@ -1,7 +1,6 @@
 
 
 const sectionTareas = document.querySelector('#tareas');
-const guardar = document.querySelector('#save');
 const inputSearch = document.querySelector('#formSearch');
 const addTarea = document.querySelector('#newToDo');
 
@@ -11,7 +10,6 @@ function printTareas(pListTareas, pSectionDom) {
 
     pSectionDom.innerHTML = '';
     if (pListTareas.length > 0) {
-
         pListTareas.forEach(tarea => pintOneTarea(tarea, pSectionDom))
         return true;
     }
@@ -50,6 +48,7 @@ function removeTarea(event) {
     let result = deleteTarea(Listatareas, idBorrar);
     if (result.status) {
         event.target.parentNode.remove();
+        localStorage.setItem('Storagetareas', JSON.stringify(Listatareas));
         alert('Tarea borrada correctamente')
     } else {
         alert('Fallo al borrar la tarea')
@@ -59,10 +58,6 @@ function removeTarea(event) {
     }
 
 }
-
-//removeTarea()
-
-
 
 inputSearch.addEventListener('input', busqueda)
 
@@ -74,7 +69,6 @@ function busqueda(event) {
     let listaFiltrada = busquedaTarea(Listatareas, letra);
 
     printTareas(listaFiltrada, sectionTareas)
-
 }
 
 
